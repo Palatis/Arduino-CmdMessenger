@@ -27,9 +27,9 @@
 
 #include <inttypes.h>
 #if ARDUINO >= 100
-#include <Arduino.h> 
+#include <Arduino.h>
 #else
-#include <WProgram.h> 
+#include <WProgram.h>
 #endif
 
 //#include "Stream.h"
@@ -59,21 +59,21 @@ enum
 class CmdMessenger
 {
 private:
-	// **** Private variables *** 
+	// **** Private variables ***
 
 	bool    startCommand;            // Indicates if sending of a command is underway
-	uint8_t lastCommandId;		    // ID of last received command 
+	uint8_t lastCommandId;		    // ID of last received command
 	uint8_t bufferIndex;              // Index where to write data in buffer
 	uint8_t bufferLength;             // Is set to MESSENGERBUFFERSIZE
 	uint8_t bufferLastIndex;          // The last index of the buffer
-	char ArglastChar;                 // Bookkeeping of argument escape char 
-	char CmdlastChar;                 // Bookkeeping of command escape char 
+	char ArglastChar;                 // Bookkeeping of argument escape char
+	char CmdlastChar;                 // Bookkeeping of command escape char
 	bool pauseProcessing;             // pauses processing of new commands, during sending
 	bool print_newlines;              // Indicates if \r\n should be added after send command
 	char commandBuffer[MESSENGERBUFFERSIZE]; // Buffer that holds the data
 	char streamBuffer[MAXSTREAMBUFFERSIZE]; // Buffer that holds the data
 	uint8_t messageState;             // Current state of message processing
-	bool dumped;                      // Indicates if last argument has been externally read 
+	bool dumped;                      // Indicates if last argument has been externally read
 	bool ArgOk;						// Indicated if last fetched argument could be read
 	char *current;                    // Pointer to current buffer position
 	char *last;                       // Pointer to previous buffer position
@@ -84,8 +84,8 @@ private:
 	char field_separator;				// Character indicating end of argument (default: ',')
 	char escape_character;		    // Character indicating escaping of special chars
 
-	messengerCallbackFunction default_callback;            // default callback function  
-	messengerCallbackFunction callbackList[MAXCALLBACKS];  // list of attached callback functions 
+	messengerCallbackFunction default_callback;            // default callback function
+	messengerCallbackFunction callbackList[MAXCALLBACKS];  // list of attached callback functions
 
 
 	// **** Initialize ****
