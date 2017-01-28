@@ -60,24 +60,24 @@ class CmdMessenger
 private:
 	// **** Private variables ***
 
-	bool    startCommand;            // Indicates if sending of a command is underway
-	uint8_t lastCommandId;		    // ID of last received command
-	uint8_t bufferIndex;              // Index where to write data in buffer
-	uint8_t bufferLength;             // Is set to MESSENGERBUFFERSIZE
-	uint8_t bufferLastIndex;          // The last index of the buffer
-	char ArglastChar;                 // Bookkeeping of argument escape char
-	char CmdlastChar;                 // Bookkeeping of command escape char
-	bool pauseProcessing;             // pauses processing of new commands, during sending
-	bool print_newlines;              // Indicates if \r\n should be added after send command
-	char commandBuffer[MESSENGERBUFFERSIZE]; // Buffer that holds the data
-	char streamBuffer[MAXSTREAMBUFFERSIZE]; // Buffer that holds the data
-	uint8_t messageState;             // Current state of message processing
-	bool dumped;                      // Indicates if last argument has been externally read
-	bool ArgOk;						// Indicated if last fetched argument could be read
-	char *current;                    // Pointer to current buffer position
-	char *last;                       // Pointer to previous buffer position
-	char prevChar;                    // Previous char (needed for unescaping)
-	Stream *comms;                    // Serial data stream
+	uint8_t startCommand:1;						// Indicates if sending of a command is underway
+	uint8_t pauseProcessing:1;					// pauses processing of new commands, during sending
+	uint8_t print_newlines:1;					// Indicates if \r\n should be added after send command
+	uint8_t dumped:1;							// Indicates if last argument has been externally read
+	uint8_t ArgOk:1;							// Indicated if last fetched argument could be read
+	uint8_t lastCommandId;						// ID of last received command
+	uint8_t bufferIndex;						// Index where to write data in buffer
+	uint8_t bufferLength;						// Is set to MESSENGERBUFFERSIZE
+	uint8_t bufferLastIndex;					// The last index of the buffer
+	char ArglastChar;							// Bookkeeping of argument escape char
+	char CmdlastChar;							// Bookkeeping of command escape char
+	char commandBuffer[MESSENGERBUFFERSIZE];	// Buffer that holds the data
+	char streamBuffer[MAXSTREAMBUFFERSIZE];		// Buffer that holds the data
+	uint8_t messageState;						// Current state of message processing
+	char *current;								// Pointer to current buffer position
+	char *last;									// Pointer to previous buffer position
+	char prevChar;								// Previous char (needed for unescaping)
+	Stream *comms;								// Serial data stream
 
 	char command_separator;           // Character indicating end of command (default: ';')
 	char field_separator;				// Character indicating end of argument (default: ',')
