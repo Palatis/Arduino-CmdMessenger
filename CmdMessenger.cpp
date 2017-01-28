@@ -24,6 +24,8 @@
   CmdMessenger Version 1    - Neil Dudman.
   CmdMessenger Version 2    - Dreamcat4.
   CmdMessenger Version 3    - Thijs Elenbaas.
+  3.7  - Remove `attach(uint8_t cmdId, messengerCallbackFunction cb)``
+  - taking too much memory space... (MAXCALLBACKS * sizeof(void (*)()))
   3.6  - Fixes
   - Better compatibility between platforms
   - Unit tests
@@ -48,7 +50,7 @@ extern "C" {
 #include <stdio.h>
 #include <CmdMessenger.h>
 
-#define _CMDMESSENGER_VERSION 3_6 // software version of this library
+#define _CMDMESSENGER_VERSION 3_7 // software version of this library
 
 // **** Initialization ****
 
