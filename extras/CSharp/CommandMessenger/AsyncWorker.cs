@@ -89,7 +89,8 @@ namespace CommandMessenger
                     _workerTask.IsBackground = true;
 
                     _workerTask.Start();
-                    SpinWait.SpinUntil(() => _workerTask.IsAlive);
+                    while (!_workerTask.IsAlive)
+                        Thread.Sleep(0);
                 }
                 else
                 {
@@ -129,7 +130,8 @@ namespace CommandMessenger
                 {
                     _requestedState = WorkerState.Suspended;
                     _eventWaiter.Set();
-                    SpinWait.SpinUntil(() => _requestedState == _state);
+                    while (_requestedState != _state)
+                        Thread.Sleep(0);
                 }
                 else
                 {
@@ -147,7 +149,8 @@ namespace CommandMessenger
                 {
                     _requestedState = WorkerState.Running;
                     _eventWaiter.Set();
-                    SpinWait.SpinUntil(() => _requestedState == _state);
+                    while (_requestedState != _state)
+                        Thread.Sleep(0);
                 }
                 else
                 {
