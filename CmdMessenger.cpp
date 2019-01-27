@@ -50,7 +50,7 @@ extern "C" {
 
 #define _CMDMESSENGER_VERSION 3_6 // software version of this library
 
-// **** Initialization **** 
+// **** Initialization ****
 
 /**
  * CmdMessenger constructor
@@ -75,7 +75,6 @@ void CmdMessenger::init(Stream &ccomms, const char fld_separator, const char cmd
 	bufferLastIndex = CMDMESSENGER_MESSENGERBUFFERSIZE - 1;
 	reset();
 
-	default_callback = NULL;
 #if CMDMESSENGER_MAXCALLBACKS != 0
 	for (int i = 0; i < CMDMESSENGER_MAXCALLBACKS; i++)
 		callbackList[i] = NULL;
@@ -131,7 +130,7 @@ void CmdMessenger::feedinSerialData()
 {
 	while (!pauseProcessing && comms->available())
 	{
-		// The Stream class has a readBytes() function that reads many bytes at once. On Teensy 2.0 and 3.0, readBytes() is optimized. 
+		// The Stream class has a readBytes() function that reads many bytes at once. On Teensy 2.0 and 3.0, readBytes() is optimized.
 		// Benchmarks about the incredible difference it makes: http://www.pjrc.com/teensy/benchmark_usb_serial_receive.html
 
 		size_t bytesAvailable = min(comms->available(), CMDMESSENGER_MAXSTREAMBUFFERSIZE);
