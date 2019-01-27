@@ -22,8 +22,7 @@
 
   */
 
-#ifndef CmdMessenger_h
-#define CmdMessenger_h
+#pragma once
 
 #include <inttypes.h>
 #if ARDUINO >= 100
@@ -308,4 +307,3 @@ public:
 
 
 };
-#endif
