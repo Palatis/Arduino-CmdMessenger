@@ -22,8 +22,7 @@
 
   */
 
-#ifndef CmdMessenger_h
-#define CmdMessenger_h
+#pragma once
 
 #include <inttypes.h>
 #if ARDUINO >= 100
@@ -101,7 +100,6 @@ private:
 	// **** Initialize ****
 
 	void init(Stream & comms, const char fld_separator, const char cmd_separator, const char esc_character);
-	void reset();
 
 	// **** Command processing ****
 
@@ -177,10 +175,13 @@ public:
 	CmdMessenger(Stream & comms, const char fld_separator = ',',
 		const char cmd_separator = ';',
 		const char esc_character = '/');
-
+		
+	void reset();
 	void printLfCr(bool addNewLine = true);
 	void attach(messengerCallbackFunction newFunction);
+	#if CMDMESSENGER_MAXCALLBACKS != 0
 	void attach(byte msgId, messengerCallbackFunction newFunction);
+	#endif
 
 	// **** Command processing ****
 
@@ -308,4 +309,3 @@ public:
 
 
 };
-#endif
