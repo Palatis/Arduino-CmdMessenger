@@ -179,7 +179,9 @@ public:
 
 	void printLfCr(bool addNewLine = true);
 	void attach(messengerCallbackFunction newFunction);
+	#if CMDMESSENGER_MAXCALLBACKS != 0
 	void attach(byte msgId, messengerCallbackFunction newFunction);
+	#endif
 
 	// **** Command processing ****
 

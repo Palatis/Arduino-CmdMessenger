@@ -110,16 +110,16 @@ void CmdMessenger::attach(messengerCallbackFunction newFunction)
 	default_callback = newFunction;
 }
 
+#if CMDMESSENGER_MAXCALLBACKS != 0
 /**
  * Attaches a function to a command ID
  */
 void CmdMessenger::attach(byte msgId, messengerCallbackFunction newFunction)
 {
-#if CMDMESSENGER_MAXCALLBACKS != 0
 	if (msgId >= 0 && msgId < CMDMESSENGER_MAXCALLBACKS)
 		callbackList[msgId] = newFunction;
-#endif
 }
+#endif
 
 // **** Command processing ****
 
