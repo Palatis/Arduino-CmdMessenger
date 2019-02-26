@@ -9,15 +9,19 @@
       "name": "Thijs Elenbaas",
       "url": "http://thijs.elenbaas.net/about"
     },
-	{
+    {
       "name": "Valeriy Kucherenko",
       "url": "https://github.com/valkuc"
+    },
+    {
+      "name": "Victor Tseng",
+      "url": "https://github.com/Palatis"
     }
   ],
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/thijse/Arduino-CmdMessenger.git"
+    "url": "https://github.com/Palatis/Arduino-CmdMessenger.git"
   },
   "dependencies": [],
   "frameworks": "arduino",
